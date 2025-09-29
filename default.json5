@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "labels": ["dependencies", "renovate"],
+  "assigneesFromCodeOwners": true,
+
+  "branchConcurrentLimit": 10,
+  "prConcurrentLimit": 20,
+  "prHourlyLimit": 2,
+
+  "ignorePaths": [
+    ".github/workflows/zz_generated.*",
+    ".github/workflows/pre_commit_*.yaml"
+  ],
+}
