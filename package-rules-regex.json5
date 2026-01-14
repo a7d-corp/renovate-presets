@@ -1,0 +1,10 @@
+{
+  "packageRules": [
+    {
+      "matchPackageNames": ["*"],
+      "matchManagers": ["regex"],
+      "additionalBranchPrefix": "{{baseDir}}/{{packageFile}}",
+      "commitMessageTopic": "{{depName}}",
+    }
+  ]
+}
