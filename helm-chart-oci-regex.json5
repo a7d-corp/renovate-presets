@@ -1,0 +1,21 @@
+{
+  "customManagers": [
+    {
+      // Update Helm charts from OCI registries
+      customType: 'regex',
+      fileMatch: [
+        '.*y[a]?ml$'
+      ],
+      matchStrings: [
+        // # renovate: datasource=docker
+        // # chartname=atlantis
+        // # url=oci://runatlantis.github.io/helm-charts
+        // (version|value): 5.18.0
+        'renovate:\\s+datasource=(?<datasource>\\w+)\\s*\\n\\W*chartname=(?<chartName>\\w+)\\s*\\n\\W*url=oci://(?<registry>\\S*)\\s*\\n\\s*version:\\s*v?(?<currentValue>.*?)\\s*\\n',
+        'renovate:\\s+datasource=(?<datasource>\\w+)\\s*\\n\\W*chartname=(?<chartName>\\w+)\\s*\\n\\W*url=oci://(?<registry>\\S*)\\s*\\n\\s*value:\\s*v?(?<currentValue>.*?)\\s*\\n'
+      ],
+      depNameTemplate: '{{ chartName }}',
+      packageNameTemplate: '{{ registry }}/{{ chartName }}',
+    }
+  ]
+}
