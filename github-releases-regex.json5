@@ -1,0 +1,27 @@
+{
+  "customManagers": [
+    {
+      // Supports various formats where a comment with `renovate: ${REPO_NAME}` is on the line
+      // before the version string line
+      "customType": "regex",
+      "fileMatch": [
+        ".*y[a]?ml$",
+      ],
+      "matchStrings": [
+        "renovate: (?<depName>.*)\n(.+)\\?= v?(?<currentValue>\\S+)\n",
+        "renovate: (?<depName>.*)\n(.+)\\/releases\\/download\\/v?(?<currentValue>.+)\\/.*",
+        "renovate: (?<depName>.*)\n(.+)=v?(?<currentValue>\\S+)\n",
+        "renovate: (?<depName>.*)\n(.+)VERSION=v?(?<currentValue>.+)\\/.*",
+        "renovate: (?<depName>.*)\n(\\s)*version: v?(?<currentValue>.*?)\n",
+        "renovate: (?<depName>.*)\n(\\s)*version:(\\s)*v?(?<currentValue>.*?)(\\s)*\n",
+        "renovate: (?<depName>.*)\n(\\s*)default: \"?.+:v?(?<currentValue>.*?)(-debug)?\"?\n",
+        "renovate: (?<depName>.*)\n(\\s*)image: \"?.+:v?(?<currentValue>.*?)\"?\n",
+        "renovate: (?<depName>.*)\n(\\s)*([\\w|_]+)release:(\\s)*v?(?<currentValue>.*?)(\\s)*\n",
+        "renovate: (?<depName>.*)\n(.+)VERSION: v?(?<currentValue>.+)\n",
+        "renovate: (?<depName>.*)\n(.+): v?(?<currentValue>.+)\n",
+      ],
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^\"?v?(?<version>.*)\"?$"
+    }
+  ]
+}
