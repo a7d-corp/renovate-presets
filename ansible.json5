@@ -1,0 +1,9 @@
+{
+  "packageRules": [
+    {
+      "matchManagers": ["ansible"],
+      "additionalBranchPrefix": "{{baseDir}}-{{packageFile}}",
+      "commitMessageTopic": "{{depName}}"
+    }
+  ]
+}
